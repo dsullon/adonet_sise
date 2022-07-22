@@ -42,14 +42,15 @@ namespace AppWinForm
         private void btnEdit_Click(object sender, EventArgs e)
         {
             int id = getId();
-            if(id > 0)
+            if (id > 0)
             {
                 var frm = new frmTipoClienteEdit(id);
                 frm.ShowDialog();
                 cargarDatos();
-            } else
+            }
+            else
             {
-                MessageBox.Show("Seleccione un Id válido", "Sistema", 
+                MessageBox.Show("Seleccione un Id válido", "Sistema",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -60,7 +61,7 @@ namespace AppWinForm
             {
                 // ¿Qué queremos procesar?
                 DataGridViewRow filaActual = dgvDatos.CurrentRow;
-                if(filaActual == null)
+                if (filaActual == null)
                 {
                     return 0;
                 }
@@ -70,20 +71,34 @@ namespace AppWinForm
             {
                 // ¿Qué hacer en caso de error?
                 return 0;
-            }            
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult respuesta = MessageBox.Show("¿Realmente desea eliminar el registro?", "Sistemas",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(respuesta == DialogResult.Yes)
+            int id = getId();
+            if (id > 0)
             {
-                // ELIMINAR EL REGISTRO
+                DialogResult respuesta = MessageBox.Show("¿Realmente desea eliminar el registro?", "Sistemas",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (respuesta == DialogResult.Yes)
+                {
+                    // ELIMINAR EL REGISTRO
+                    var adaptador = new dsAppTableAdapters.TipoClienteTableAdapter();
+                    adaptador.Remove(id);
 
-                MessageBox.Show("Registro Eliminado", "Sistemas", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Registro Eliminado", "Sistemas",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    cargarDatos();
+                }
             }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un Id válido", "Sistemas",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
     }
 }
