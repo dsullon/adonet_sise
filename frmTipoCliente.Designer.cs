@@ -36,6 +36,7 @@
             this.dsApp = new AppWinForm.dsApp();
             this.tipoClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tipoClienteTableAdapter = new AppWinForm.dsAppTableAdapters.TipoClienteTableAdapter();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsApp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoClienteBindingSource)).BeginInit();
@@ -96,11 +97,22 @@
             // 
             this.tipoClienteTableAdapter.ClearBeforeFill = true;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(175, 57);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 4;
+            this.btnDelete.Text = "Eliminar";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // frmTipoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(367, 368);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnRefresh);
@@ -124,6 +136,7 @@
         private dsAppTableAdapters.TipoClienteTableAdapter tipoClienteTableAdapter;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 

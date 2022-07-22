@@ -72,5 +72,18 @@ namespace AppWinForm
                 return 0;
             }            
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show("¿Realmente desea eliminar el registro?", "Sistemas",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(respuesta == DialogResult.Yes)
+            {
+                // ELIMINAR EL REGISTRO
+
+                MessageBox.Show("Registro Eliminado", "Sistemas", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }
